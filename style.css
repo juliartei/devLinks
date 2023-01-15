@@ -9,7 +9,7 @@
     --surface-color-hover: rgba(255, 255, 255, 0.02);
     --highlight-color: rgba(255, 255, 255, 0.2);
     --switch-bg-url: url(assets/stars.svg);
-    
+    --
 }
 
 .light {
@@ -34,7 +34,8 @@ body {
 }
 
 #container {
-    width: 360px;
+    width: 100%;
+    max-width: 588px;
     height: 712px;
     margin: 56px auto 0px;
     padding: 0 24px;
@@ -69,6 +70,7 @@ body {
 }
 
 #switch button {
+    animation: slide-back 0.2s;
     width: 32px;
     height: 32px;
     background: white var(--switch-bg-url) no-repeat center;
@@ -82,9 +84,12 @@ body {
     z-index: 1;
 }
 
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
+}
+
 .light #switch button {
-    right: -2px;
-    left: initial;
+    animation: slide-in 0.4s forwards;
     cursor: pointer;
 }
 
@@ -171,9 +176,29 @@ footer a {
     text-decoration: none;
 }
 
+
+
 @media screen and (max-width: 480px) {
     body {
         background: var(--bg-url-mobile) no-repeat top center/cover;
+        height: 100vh;
     }
+}
 
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 55%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 55%;
+    }
+    to {
+        left: 0;
+    }
 }
